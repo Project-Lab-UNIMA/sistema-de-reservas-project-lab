@@ -1,0 +1,73 @@
+spring:
+  application:
+    name: reservas
+  profiles:
+    default: local
+
+  datasource:
+    url: ${RESERVAS_BANCO_URL:jdbc:postgresql://localhost:5432/reservas}
+    username: ${RESERVAS_BANCO_USUARIO:reservas}
+    password: ${RESERVAS_BANCO_SENHA:reservas}
+
+  jpa:
+    # Desligado de propósito: a sessão do JPA não deve ficar aberta durante a
+    # serialização da resposta. Cada consulta carrega o que a resposta precisa,
+    # por junção ou dentro de uma transação explícita.
+    open-in-view: false
+    hibernate:
+      # O esquema é do Flyway. "validate" faz a aplicação recusar subir se o
+      # mapeamento e o banco divergirem, em vez de falhar na primeira consulta.
+      ddl-auto: validate
+    properties:
+      hibernate.jdbc.time_zone: UTC
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+  jackson:
+    # Instantes em ISO-8601, não em número de segundos: o front-end e os logs
+    # precisam de datas legíveis.
+    serialization:
+      write-dates-as-timestamps: false
+
+server:
+  port: ${RESERVAS_PORTA:8080}
+  error:
+    # As respostas de erro saem pelo TratadorErros, em problem+json com código
+    # estável. A página de erro padrão não deve vazar detalhes.
+    include-message: never
+    include-stacktrace: never
+
+reservas:
+  # Primeira conta da direção: providência técnica de implantação, fora do
+  # fluxo de autocadastro. Sem a senha definida, nada é criado.
+  conta-inicial:
+    habilitada: true
+    nome: Direção
+    identificacao-institucional: IMPLANTACAO
+    identificacao-acesso: ${RESERVAS_DIRECAO_ACESSO:direcao@unima.br}
+    senha: ${RESERVAS_DIRECAO_SENHA:}
+
+  # Origens do front-end autorizadas. Como a autenticação é por sessão, cada
+  # origem precisa ser declarada: curinga não funciona com credenciais.
+  cors:
+    origens-permitidas: ${RESERVAS_CORS_ORIGENS:http://localhost:5173,http://localhost:3000,http://localhost:8080}
+
+  tarefas:
+    expiracao-pre-bloqueio: 60s
+    nao-comparecimento: 60s
+    atraso-inicial: 20s
+
+logging:
+  level:
+    br.unima.reservas: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
