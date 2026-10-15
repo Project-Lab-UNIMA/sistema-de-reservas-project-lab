@@ -1,0 +1,18 @@
+# Perfil de desenvolvimento.
+#
+# Carrega também a pasta de dados de demonstração, que cria o campus, os
+# ambientes com grade e checklist e as contas locais de teste previstas como
+# alternativa ao login institucional (Regras do MVP, seção 11).
+spring:
+  flyway:
+    locations: classpath:db/migration,classpath:db/dados-local
+
+  jpa:
+    show-sql: false
+    properties:
+      hibernate.format_sql: true
+
+logging:
+  level:
+    br.unima.reservas: DEBUG
+    org.flywaydb.core.internal.command: INFO

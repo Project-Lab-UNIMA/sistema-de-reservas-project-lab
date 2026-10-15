@@ -1,9 +1,25 @@
+# Banco de desenvolvimento.
+#
+# A versão está fixada: o esquema usa uma restrição de exclusão com GiST e a
+# extensão btree_gist, e subir em uma versão diferente da usada em teste é
+# justamente o tipo de diferença que aparece só na hora errada.
 services:
   postgres:
-    image: 'postgres:latest'
+    image: 'postgres:16'
+    container_name: 'reservas-postgres'
     environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+      - 'POSTGRES_DB=reservas'
+      - 'POSTGRES_USER=reservas'
+      - 'POSTGRES_PASSWORD=reservas'
     ports:
-      - '5432'
+      - '5432:5432'
+    volumes:
+      - 'reservas-pgdata:/var/lib/postgresql/data'
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U reservas -d reservas']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  reservas-pgdata:

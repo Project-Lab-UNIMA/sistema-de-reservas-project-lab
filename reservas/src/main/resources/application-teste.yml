@@ -1,0 +1,26 @@
+# Perfil de teste.
+#
+# Sem dados de demonstração: cada teste monta o cenário de que precisa, para
+# que uma mudança no arquivo de demonstração não altere silenciosamente o
+# resultado de um teste.
+#
+# O agendamento fica desligado (ver ConfiguracaoAgendamento): os testes chamam
+# as tarefas diretamente, com o relógio sob controle, em vez de esperar o
+# agendador disparar no meio de uma asserção.
+spring:
+  flyway:
+    locations: classpath:db/migration
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+
+reservas:
+  conta-inicial:
+    habilitada: false
+
+logging:
+  level:
+    br.unima.reservas: INFO
+    org.hibernate.SQL: WARN
