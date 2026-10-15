@@ -4,6 +4,10 @@ spring:
   profiles:
     default: local
 
+  docker:
+    compose:
+      enabled: false
+
   datasource:
     url: ${RESERVAS_BANCO_URL:jdbc:postgresql://localhost:5432/reservas}
     username: ${RESERVAS_BANCO_USUARIO:reservas}
@@ -18,18 +22,10 @@ spring:
       # O esquema é do Flyway. "validate" faz a aplicação recusar subir se o
       # mapeamento e o banco divergirem, em vez de falhar na primeira consulta.
       ddl-auto: validate
-    properties:
-      hibernate.jdbc.time_zone: UTC
 
   flyway:
     enabled: true
     locations: classpath:db/migration
-
-  jackson:
-    # Instantes em ISO-8601, não em número de segundos: o front-end e os logs
-    # precisam de datas legíveis.
-    serialization:
-      write-dates-as-timestamps: false
 
 server:
   port: ${RESERVAS_PORTA:8080}
