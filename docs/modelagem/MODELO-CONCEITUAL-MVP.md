@@ -242,4 +242,8 @@ As condições são simultâneas: `início <= agora < fim` e `agora <= início +
 
 ### Próxima entrega
 
-A Etapa 3 deverá transformar este DER em modelo lógico e dicionário de dados: atributos completos, obrigatoriedade, identificadores, associação Usuário–Perfil, domínios de estado, restrições e política de preservação dos registros. Só depois serão definidos os scripts SQL e as migrações.
+A proposta da Etapa 3 está no [modelo lógico](MODELO-LOGICO-MVP.md) e no
+[dicionário de dados](DICIONARIO-DADOS-MVP.md): atributos completos,
+obrigatoriedade, identificadores, associação Usuário–Perfil, domínios de estado,
+restrições e política de preservação dos registros. Esses documentos devem ser
+revisados com o backend antes dos scripts SQL e das migrações.

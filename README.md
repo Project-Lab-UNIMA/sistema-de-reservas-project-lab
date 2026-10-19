@@ -12,6 +12,8 @@ e o encerramento.
 | --- | --- |
 | [`docs/requisitos/REGRAS-MVP.md`](docs/requisitos/REGRAS-MVP.md) | O recorte e as regras acordadas (Etapa 1) |
 | [`docs/modelagem/MODELO-CONCEITUAL-MVP.md`](docs/modelagem/MODELO-CONCEITUAL-MVP.md) | DER e decisões de modelagem (Etapa 2) |
+| [`docs/modelagem/MODELO-LOGICO-MVP.md`](docs/modelagem/MODELO-LOGICO-MVP.md) | Tabelas, integridade e decisões para revisão (Etapa 3) |
+| [`docs/modelagem/DICIONARIO-DADOS-MVP.md`](docs/modelagem/DICIONARIO-DADOS-MVP.md) | Campos, tipos propostos, chaves e domínios (Etapa 3) |
 | [`docs/api/CONTRATO-API.md`](docs/api/CONTRATO-API.md) | Contrato da API, para integrar o front-end |
 | [`docs/backend/ARQUITETURA.md`](docs/backend/ARQUITETURA.md) | Decisões de implementação do back-end |
 | [`docs/backend/PONTOS-ABERTOS.md`](docs/backend/PONTOS-ABERTOS.md) | O que ainda depende de decisão do grupo |
