@@ -16,6 +16,8 @@ e o encerramento.
 | [`docs/backend/ARQUITETURA.md`](docs/backend/ARQUITETURA.md) | Decisões de implementação do back-end |
 | [`docs/backend/PONTOS-ABERTOS.md`](docs/backend/PONTOS-ABERTOS.md) | O que ainda depende de decisão do grupo |
 | [`reservas/`](reservas/) | O back-end (Spring Boot 4.1, Java 21, PostgreSQL 16) |
+| [`docs/testes/PLANO-VALIDACAO-MVP.md`](docs/testes/PLANO-VALIDACAO-MVP.md) | Cenários planejados e cobertura das regras do MVP |
+| [`docs/demonstracao/ROTEIRO-DADOS-MVP.md`](docs/demonstracao/ROTEIRO-DADOS-MVP.md) | Dados fictícios e preparação da demonstração |
 
 Comece pelo [README do back-end](reservas/README.md) para rodar o projeto.
 
@@ -27,8 +29,16 @@ docker compose up -d        # PostgreSQL 16
 ./mvnw spring-boot:run      # API em http://localhost:8080
 ```
 
-A API sobe com dados de demonstração e contas de teste — a lista está no README
-do back-end.
+Na base desta documentação, o projeto contém a infraestrutura de execução e CI.
+As migrações, os dados de demonstração, as contas do MVP e os fluxos de reserva
+ainda precisam ser implementados. A configuração já aponta para a futura carga
+local, mas iniciar a aplicação não cria esses dados por si só. Consulte o
+[README do back-end](reservas/README.md) para os perfis e o estado atual.
+
+Os caminhos de contrato da API, arquitetura e pontos abertos listados na tabela
+são documentos planejados e ainda não existem nesta versão. Os planos de
+validação e demonstração já podem orientar a preparação do grupo; seus cenários
+ainda precisam ser implementados e executados.
 
 ## Fluxo de trabalho no Git
 
